@@ -3,11 +3,11 @@ name: CI
 on:
   push:
     branches:
-    - master
+    - main
     - v*
   pull_request:
     branches:
-    - master
+    - main
     - v*
 
 jobs:
@@ -31,7 +31,7 @@ jobs:
 {%- endfor %}
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: spark-k8s-addons
+      IMAGE_NAME: spark-k8s-addons-ds
       SELF_VERSION: "{{ self_version }}"
       BASE_VERSION: "v2"
       {% raw -%}

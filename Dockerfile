@@ -79,6 +79,9 @@ RUN set -euo pipefail && \
     # AWS CLI
     pushd "${POETRY_SYSTEM_PROJECT_DIR}"; \
     poetry add awscli; \
+    poetry add attr; \
+    poetry add pendulum; \
+    poetry add requests; \
     popd; \
     # Google Storage JAR
     curl -LO https://storage.googleapis.com/hadoop-lib/gcs/gcs-connector-hadoop2-latest.jar; \

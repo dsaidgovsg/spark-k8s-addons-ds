@@ -3,11 +3,11 @@ name: CI
 on:
   push:
     branches:
-    - master
+    - main
     - v*
   pull_request:
     branches:
-    - master
+    - main
     - v*
 
 jobs:
@@ -15,78 +15,6 @@ jobs:
     strategy:
       matrix:
         version:
-        - spark:  "2.4.5"
-          hadoop: "3.1.0"
-          scala:  "2.11"
-          python: "3.6"
-        - spark:  "2.4.5"
-          hadoop: "3.1.0"
-          scala:  "2.11"
-          python: "3.7"
-        - spark:  "2.4.5"
-          hadoop: "3.1.0"
-          scala:  "2.11"
-          python: "3.8"
-        - spark:  "2.4.5"
-          hadoop: "3.1.0"
-          scala:  "2.12"
-          python: "3.6"
-        - spark:  "2.4.5"
-          hadoop: "3.1.0"
-          scala:  "2.12"
-          python: "3.7"
-        - spark:  "2.4.5"
-          hadoop: "3.1.0"
-          scala:  "2.12"
-          python: "3.8"
-        - spark:  "2.4.6"
-          hadoop: "3.1.0"
-          scala:  "2.11"
-          python: "3.6"
-        - spark:  "2.4.6"
-          hadoop: "3.1.0"
-          scala:  "2.11"
-          python: "3.7"
-        - spark:  "2.4.6"
-          hadoop: "3.1.0"
-          scala:  "2.11"
-          python: "3.8"
-        - spark:  "2.4.6"
-          hadoop: "3.1.0"
-          scala:  "2.12"
-          python: "3.6"
-        - spark:  "2.4.6"
-          hadoop: "3.1.0"
-          scala:  "2.12"
-          python: "3.7"
-        - spark:  "2.4.6"
-          hadoop: "3.1.0"
-          scala:  "2.12"
-          python: "3.8"
-        - spark:  "2.4.7"
-          hadoop: "3.1.0"
-          scala:  "2.11"
-          python: "3.6"
-        - spark:  "2.4.7"
-          hadoop: "3.1.0"
-          scala:  "2.11"
-          python: "3.7"
-        - spark:  "2.4.7"
-          hadoop: "3.1.0"
-          scala:  "2.11"
-          python: "3.8"
-        - spark:  "2.4.7"
-          hadoop: "3.1.0"
-          scala:  "2.12"
-          python: "3.6"
-        - spark:  "2.4.7"
-          hadoop: "3.1.0"
-          scala:  "2.12"
-          python: "3.7"
-        - spark:  "2.4.7"
-          hadoop: "3.1.0"
-          scala:  "2.12"
-          python: "3.8"
         - spark:  "3.0.0"
           hadoop: "3.2.0"
           scala:  "2.12"
@@ -113,7 +41,7 @@ jobs:
           python: "3.8"
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: spark-k8s-addons
+      IMAGE_NAME: spark-k8s-addons-ds
       SELF_VERSION: "v4"
       BASE_VERSION: "v2"
       SPARK_VERSION: "${{ matrix.version.spark }}"

@@ -1,6 +1,6 @@
-# `spark-k8s-addons`
+# `spark-k8s-addons-ds`
 
-![CI Status](https://img.shields.io/github/workflow/status/dsaidgovsg/spark-k8s-addons/CI/master?label=CI&logo=github&style=for-the-badge)
+![CI Status](https://img.shields.io/github/workflow/status/dsaidgovsg/spark-k8s-addons-ds/CI/main?label=CI&logo=github&style=for-the-badge)
 
 CI Dockerfile setup to install cloud related utilities onto the standard Spark
 K8s Docker images.
@@ -23,7 +23,7 @@ PYTHON_VERSION=3.8
 docker pull dsaidgovsg/spark-k8s-py:${BASE_VERSION}_${SPARK_VERSION}_hadoop-${HADOOP_VERSION}_scala-${SCALA_VERSION}
 PY4J_SRC="$(docker run --rm -t --entrypoint sh "dsaidgovsg/spark-k8s-py:${BASE_VERSION}_${SPARK_VERSION}_hadoop-${HADOOP_VERSION}_scala-${SCALA_VERSION}" -c 'ls --color=never ${SPARK_HOME}/python/lib/py4j-*.zip' | tr -d "\r\n")"
 
-IMAGE_NAME=spark-k8s-addons
+IMAGE_NAME=spark-k8s-addons-ds
 docker build -t "${IMAGE_NAME}" \
     --build-arg BASE_VERSION="${BASE_VERSION}" \
     --build-arg SPARK_VERSION="${SPARK_VERSION}" \
