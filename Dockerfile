@@ -79,7 +79,7 @@ RUN set -euo pipefail && \
     # AWS CLI
     pushd "${POETRY_SYSTEM_PROJECT_DIR}"; \
     poetry add awscli; \
-    poetry add attr; \
+    poetry add attrs; \
     poetry add pendulum; \
     poetry add requests; \
     poetry add jwt; \
