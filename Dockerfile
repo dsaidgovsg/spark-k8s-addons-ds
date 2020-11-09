@@ -82,6 +82,7 @@ RUN set -euo pipefail && \
     poetry add attr; \
     poetry add pendulum; \
     poetry add requests; \
+    poetry add jwt; \
     popd; \
     # Google Storage JAR
     curl -LO https://storage.googleapis.com/hadoop-lib/gcs/gcs-connector-hadoop2-latest.jar; \
