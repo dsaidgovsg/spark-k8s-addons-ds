@@ -33,7 +33,7 @@ jobs:
     env:
       IMAGE_NAME: spark-k8s-addons-ds
       SELF_VERSION: "{{ self_version }}"
-      BASE_VERSION: "v2"
+      BASE_VERSION: "{{ base_version }}"
       {% raw -%}
       SPARK_VERSION: "${{ matrix.version.spark }}"
       HADOOP_VERSION: "${{ matrix.version.hadoop }}"
@@ -41,6 +41,9 @@ jobs:
       PYTHON_VERSION: "${{ matrix.version.python }}"
       {%- endraw %}
     steps:
+    - name: Set global environment variables
+      run: |-
+        echo "TAG_NAME=${SELF_VERSION}_${SPARK_VERSION}_hadoop-${HADOOP_VERSION}_scala-${SCALA_VERSION}_python-${PYTHON_VERSION}" >> $GITHUB_ENV
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Install tera-cli
@@ -54,16 +57,12 @@ jobs:
         if ! diff .github/workflows/ci.yml .github/workflows/ci.yml.backup; then echo "ci.yml.tmpl and ci.yml differs!" && exit 1; fi
     - name: Build Docker image
       run: |-
-        PY4J_SRC="$(docker run --rm -t --entrypoint sh "dsaidgovsg/spark-k8s-py:${BASE_VERSION}_${SPARK_VERSION}_hadoop-${HADOOP_VERSION}_scala-${SCALA_VERSION}" -c 'ls --color=never ${SPARK_HOME}/python/lib/py4j-*.zip' | tr -d "\r\n")"
-        echo "PY4J_SRC - ${PY4J_SRC}"
-        TAG_NAME="${SELF_VERSION}_${SPARK_VERSION}_hadoop-${HADOOP_VERSION}_scala-${SCALA_VERSION}_python-${PYTHON_VERSION}"
         docker build . -t "${IMAGE_NAME}:${TAG_NAME}" \
           --build-arg BASE_VERSION="${BASE_VERSION}" \
           --build-arg SPARK_VERSION="${SPARK_VERSION}" \
           --build-arg HADOOP_VERSION="${HADOOP_VERSION}" \
           --build-arg SCALA_VERSION="${SCALA_VERSION}" \
-          --build-arg PYTHON_VERSION="${PYTHON_VERSION}" \
-          --build-arg PY4J_SRC="${PY4J_SRC}" \
+          --build-arg PYTHON_VERSION="${PYTHON_VERSION}"
     - name: Push Docker image
       run: bash push-images.sh
       env:
