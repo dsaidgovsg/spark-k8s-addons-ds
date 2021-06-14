@@ -20,12 +20,12 @@ RUN set -euo pipefail && \
     ## Pip install
     pushd "${POETRY_SYSTEM_PROJECT_DIR}"; \
     poetry add \
-        "attrs==19.3.*" \
+        "attrs==20.3.*" \
         "croniter==0.3.*" \
         "matplotlib==3.2.*" \
         "numpy==1.17.*" \
         "pandas==0.25.*" \
-        "pendulum==1.4.4" \
+        "pendulum==2.1.2" \
         "pyjwt==1.7.*" \
         "pyproj==1.9.*" \
         "python-dateutil==2.8.*" \

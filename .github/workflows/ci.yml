@@ -39,10 +39,22 @@ jobs:
           hadoop: "3.2.0"
           scala:  "2.12"
           python: "3.8"
+        - spark:  "3.0.2"
+          hadoop: "3.2.0"
+          scala:  "2.12"
+          python: "3.6"
+        - spark:  "3.0.2"
+          hadoop: "3.2.0"
+          scala:  "2.12"
+          python: "3.7"
+        - spark:  "3.0.2"
+          hadoop: "3.2.0"
+          scala:  "2.12"
+          python: "3.8"
     runs-on: ubuntu-latest
     env:
       IMAGE_NAME: spark-k8s-addons-ds
-      SELF_VERSION: "v1"
+      SELF_VERSION: "v2"
       BASE_VERSION: "v4"
       SPARK_VERSION: "${{ matrix.version.spark }}"
       HADOOP_VERSION: "${{ matrix.version.hadoop }}"
