@@ -9,7 +9,7 @@ enhanced `spark-k8s-addons` Docker image, which is built using
 ## How to build
 
 ```bash
-SPARK_VERSION=3.0.1
+SPARK_VERSION=3.0.2
 HADOOP_VERSION=3.2.0
 SCALA_VERSION=2.12
 PYTHON_VERSION=3.8
@@ -25,12 +25,12 @@ docker build -t "${IMAGE_NAME}" \
 
 ## Pip packages added
 
-- attrs==19.3.*
+- attrs==20.3.*
 - croniter==0.3.*
 - matplotlib==3.2.*
 - numpy==1.17.*
 - pandas==0.25.*
-- pendulum==1.4.4
+- pendulum==2.1.2
 - pyjwt==1.7.*
 - pyproj==1.9.*
 - python-dateutil==2.8.*
