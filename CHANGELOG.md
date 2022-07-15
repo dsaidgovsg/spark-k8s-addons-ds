@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## v2
+
+- Update to support spark 3.1, 3.2 and 3.3
+- Use `v5` of `spark-k8s-addons-ds`, which is Java version differentiated
+  - Changelog: <https://github.com/dsaidgovsg/spark-k8s-addons/blob/master/CHANGELOG.md#v5>
+- Update the following libraries from v1:
+  - attrs==20.3.*
+  - pendulum==2.1.2
+
 ## v1
 
 - Use `v4` of `spark-k8s-addons`

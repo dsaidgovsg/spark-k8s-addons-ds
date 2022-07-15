@@ -9,9 +9,10 @@ enhanced `spark-k8s-addons` Docker image, which is built using
 ## How to build
 
 ```bash
-SPARK_VERSION=3.0.2
-HADOOP_VERSION=3.2.0
+SPARK_VERSION=3.3.0
+HADOOP_VERSION=3.3.2
 SCALA_VERSION=2.12
+JAVA_VERSION=8
 PYTHON_VERSION=3.8
 
 IMAGE_NAME=spark-k8s-addons-ds
@@ -19,6 +20,7 @@ docker build -t "${IMAGE_NAME}" \
     --build-arg SPARK_VERSION="${SPARK_VERSION}" \
     --build-arg HADOOP_VERSION="${HADOOP_VERSION}" \
     --build-arg SCALA_VERSION="${SCALA_VERSION}" \
+    --build-arg JAVA_VERSION="${JAVA_VERSION}" \
     --build-arg PYTHON_VERSION="${PYTHON_VERSION}" \
     .
 ```

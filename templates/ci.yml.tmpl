@@ -19,11 +19,14 @@ jobs:
 {%- for spark in v.spark %}
 {%- for hadoop in v.hadoop %}
 {%- for scala in v.scala %}
+{%- for java in v.java %}
 {%- for python in v.python %}
         - spark:  "{{ spark }}"
           hadoop: "{{ hadoop }}"
           scala:  "{{ scala }}"
+          java:   "{{ java }}"
           python: "{{ python }}"
+{%- endfor %}
 {%- endfor %}
 {%- endfor %}
 {%- endfor %}
@@ -38,12 +41,13 @@ jobs:
       SPARK_VERSION: "${{ matrix.version.spark }}"
       HADOOP_VERSION: "${{ matrix.version.hadoop }}"
       SCALA_VERSION: "${{ matrix.version.scala }}"
+      JAVA_VERSION: "${{ matrix.version.java }}"
       PYTHON_VERSION: "${{ matrix.version.python }}"
       {%- endraw %}
     steps:
     - name: Set global environment variables
       run: |-
-        echo "TAG_NAME=${SELF_VERSION}_${SPARK_VERSION}_hadoop-${HADOOP_VERSION}_scala-${SCALA_VERSION}_python-${PYTHON_VERSION}" >> $GITHUB_ENV
+        echo "TAG_NAME=${SELF_VERSION}_${SPARK_VERSION}_hadoop-${HADOOP_VERSION}_scala-${SCALA_VERSION}_java-${JAVA_VERSION}_python-${PYTHON_VERSION}" >> $GITHUB_ENV
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Install tera-cli
@@ -62,6 +66,7 @@ jobs:
           --build-arg SPARK_VERSION="${SPARK_VERSION}" \
           --build-arg HADOOP_VERSION="${HADOOP_VERSION}" \
           --build-arg SCALA_VERSION="${SCALA_VERSION}" \
+          --build-arg JAVA_VERSION="${JAVA_VERSION}" \
           --build-arg PYTHON_VERSION="${PYTHON_VERSION}"
     - name: Push Docker image
       run: bash push-images.sh
